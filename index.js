@@ -17,7 +17,7 @@ cors_proxy.createServer({
 
 
 
-app.get('/filtered_items', (req, res) => {
+app.post('/', (req, res) => {
   
   res.send({ message: 'Hello World'});
 });
