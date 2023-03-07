@@ -1,7 +1,6 @@
 
 import express from 'express';
 import cors_proxy from 'cors-anywhere';
-import items from './items.js'
 
 const HOST = '0.0.0.0';
 const CORS_PORT = 8080;
@@ -16,19 +15,11 @@ cors_proxy.createServer({
   console.log('Running CORS Anywhere on ' + HOST + ':' + CORS_PORT);
 });
 
-const filterProductsByText = (text) => {
-  const filterCondition = (item) => item.category.toLowerCase() === text.toLowerCase() || item.name.toLowerCase() === text.toLowerCase(); 
 
-  return items.filter(item => {
-    if(filterCondition(item)) {
-      return item;
-    }
-  })
-}
 
 app.get('/filtered_items', (req, res) => {
-  const text = req.query.text;
-  res.send({ filteredItems:  filterProductsByText(text)});
+  
+  res.send({ message: 'Hello World'});
 });
 
 app.listen(PORT, () => {
